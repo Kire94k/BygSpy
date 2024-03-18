@@ -5,7 +5,7 @@ using FakeItEasy;
 
 namespace BygSpyTest
 {
-//TODO move the top part of the code 
+//TODO move the top part of the code -> BygSpy project
     public class UserTest
     {
         public interface IAuthService
