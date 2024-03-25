@@ -5,7 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BygSpy", "BygSpy\BygSpy.csproj", "{B91F39FE-A3D7-4666-91C7-83E81F942D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BygSpyTest", "BygSpyTest\BygSpyTest.csproj", "{BC4EAB3E-A2D9-4839-B527-6B9E27310A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BygSpyTest", "BygSpyTest\BygSpyTest.csproj", "{BC4EAB3E-A2D9-4839-B527-6B9E27310A69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BygSpyServerTest", "BygSpyServerTest\BygSpyServerTest.csproj", "{BEBA60D7-92EB-4958-A1AB-8D6E32E607E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BygSpyServer", "BygSpyServer\BygSpyServer.csproj", "{00A7B1C6-C666-4E4F-9CDB-010B7B38B427}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{BC4EAB3E-A2D9-4839-B527-6B9E27310A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC4EAB3E-A2D9-4839-B527-6B9E27310A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC4EAB3E-A2D9-4839-B527-6B9E27310A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEBA60D7-92EB-4958-A1AB-8D6E32E607E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBA60D7-92EB-4958-A1AB-8D6E32E607E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBA60D7-92EB-4958-A1AB-8D6E32E607E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBA60D7-92EB-4958-A1AB-8D6E32E607E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A7B1C6-C666-4E4F-9CDB-010B7B38B427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A7B1C6-C666-4E4F-9CDB-010B7B38B427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A7B1C6-C666-4E4F-9CDB-010B7B38B427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A7B1C6-C666-4E4F-9CDB-010B7B38B427}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
