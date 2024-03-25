@@ -12,7 +12,7 @@ class Program
     {
         var users = new Dictionary<string, string>
         {
-            { "user", "password1" },
+            { "user1", "password1" },
             { "user2", "password2" }
         };
 
