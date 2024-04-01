@@ -1,0 +1,8 @@
+{
+    "app_id": "bygspyserver-yarmg",
+    "config_version": 20210101,
+    "name": "BygSpyServer",
+    "provider_region": "azure-westeurope",
+    "deployment_model": "LOCAL",
+    "environment": "development"
+}
