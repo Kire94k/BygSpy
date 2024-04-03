@@ -20,7 +20,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
 
 
 
-MongoClient client = new MongoClient("ATLAS_URI_HERE");
+MongoClient client = new MongoClient("mongodb+srv://khjensenkj:<password>@cluster0.hfvedkb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
 List<string> databases = client.ListDatabaseNames().ToList();
 
