@@ -1,47 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿// See https://aka.ms/new-console-template for more information
+using AspNetCore.Identity.MongoDbCore.Infrastructure;
+using AspNetCore.Identity.MongoDbCore.Models;
+using BygSpyServer.Persistence.MongoDbUser;
+using BygSpyServer.RefitClients;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using MongoDB.Driver;
+using Refit;
+using System.Configuration;
+using MongoDB.Bson;
 
-class Program
-{
-    static async Task Main(string[] args)
+using IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((_, services) =>
     {
-        var users = new Dictionary<string, string>
-        {
-            { "user1", "password1" },
-            { "user2", "password2" }
-        };
 
-        var host = new WebHostBuilder()
-            .UseKestrel()
-            .Configure(app =>
-            {
-                app.UseRouting();
 
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapPost("/api/login", async context =>
-                    {
-                        var username = context.Request.Form["username"];
-                        var password = context.Request.Form["password"];
+    }).Build();
 
-                        if (users.TryGetValue(username, out string expectedPassword) && expectedPassword == password)
-                        {
-                            context.Response.StatusCode = (int)HttpStatusCode.OK;
-                        }
-                        else
-                        {
-                            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        }
-                    });
-                });
-            })
-            .Build();
 
-        await host.RunAsync();
-    }
+
+MongoClient client = new MongoClient("ATLAS_URI_HERE");
+
+List<string> databases = client.ListDatabaseNames().ToList();
+
+foreach (string database in databases)
+{
+    Console.WriteLine(database);
 }
+
+var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI");
+if (connectionString == null)
+{
+    Console.WriteLine("You must set your 'MONGODB_URI' environment variable. To learn how to set it, see https://www.mongodb.com/docs/drivers/csharp/current/quick-start/#set-your-connection-string");
+    Environment.Exit(0);
+}
+
+//Fast excample to understand connection
+
+//var client = new MongoClient(connectionString);
+//var collection = client.GetDatabase("sample_mflix").GetCollection<BsonDocument>("movies");
+//var filter = Builders<BsonDocument>.Filter.Eq("title", "Back to the Future");
+//var document = collection.Find(filter).First();
+//Console.WriteLine(document);

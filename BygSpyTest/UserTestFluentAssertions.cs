@@ -7,7 +7,7 @@ using FluentAssertions;
 namespace BygSpyTest
 {
 //TODO move the top part of the code -> BygSpy project
-    public class UserTest
+    public class UserTestFluentAssertions
     {
         public interface IAuthService
         {
@@ -29,6 +29,7 @@ namespace BygSpyTest
                 return _authService.Authenticate(username, password);
             }
         }
+
         [Fact]
         public void Login_ShouldReturnTrue_WhenAuthenticationSucceeds()
         {

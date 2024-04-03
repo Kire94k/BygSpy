@@ -1,0 +1,63 @@
+﻿@page "/login"
+@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Text.Json
+@using System.Threading.Tasks
+@using System.Diagnostics
+
+<h3>Login</h3>
+
+@if (errorMessage != null)
+{
+    <p style="color: red;">@errorMessage</p>
+}
+
+<form @onsubmit="HandleSubmit">
+    <label for="username">Username:</label>
+    <input type="text" id="username" @bind="username" /><br />
+    <label for="password">Password:</label>
+    <input type="password" id="password" @bind="password" /><br />
+    <button type="submit">Login</button>
+</form>
+
+@code {
+    private string username;
+    private string password;
+    private string errorMessage;
+    private HttpClient httpClient = new HttpClient();
+
+    private async Task HandleSubmit()
+    {
+        var loginModel = new LoginModel { Username = username, Password = password };
+
+        try
+        {
+            HttpResponseMessage response = await httpClient.PostAsJsonAsync("http://localhost:5000/api/login", loginModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Login successful
+            }
+            else
+            {
+                errorMessage = "Invalid username or password.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "An error occurred: " + ex.Message;
+        }
+    }
+
+    [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
+    public class LoginModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
+        }
+    }
+}
