@@ -1,6 +1,6 @@
 ﻿namespace BygSpy.Models
 {
-    public class House
+    public class ConstructionCase
     {
     }
 }
