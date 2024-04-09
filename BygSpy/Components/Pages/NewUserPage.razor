@@ -27,10 +27,7 @@
 @code {
     private string name;
     private string password;
-
-
     private User newUser;
-
     private string errorMessage;
     
     private HttpClient httpClient = new HttpClient();
@@ -39,23 +36,23 @@
     {
         var userModel = new User {};
 
-        try
-        {
-            HttpResponseMessage response = await httpClient.PostAsJsonAsync("http://localhost:5000/api/login", loginModel);
+        // try
+        // {
+        //     HttpResponseMessage response = await httpClient.PostAsJsonAsync("http://localhost:5000/api/login");
 
-            if (response.IsSuccessStatusCode)
-            {
-                // Login successful
-            }
-            else
-            {
-                errorMessage = "Invalid username or password.";
-            }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = "An error occurred: " + ex.Message;
-        }
+        //     if (response.IsSuccessStatusCode)
+        //     {
+        //         // Login successful
+        //     }
+        //     else
+        //     {
+        //         errorMessage = "Invalid username or password.";
+        //     }
+        // }
+        // catch (Exception ex)
+        // {
+        //     errorMessage = "An error occurred: " + ex.Message;
+        // }
     }
 
     [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]

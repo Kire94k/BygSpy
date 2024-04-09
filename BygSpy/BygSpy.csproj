@@ -20,8 +20,4 @@
     <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Components\Controller\" />
-  </ItemGroup>
-
 </Project>
