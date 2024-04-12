@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://bygspy2024.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_5b7f924bae3142a5beb6ce002c4f1597 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_90519225107f4656b91c777dbe5d7b67 }}
+        username: BygSpy2024
+        password: R5D6nrg1VZ3G3VP+GPUcZtgx23tNUmU4SWbcSTOIKD+ACRBq+rLT
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: bygspy2024.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5b7f924bae3142a5beb6ce002c4f1597 }}/bygspy2024.azurecr.io/bygspy:${{ github.sha }}
+        tags: bygspy2024.azurecr.io/BygSpy2024/bygspy2024.azurecr.io/bygspy:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
