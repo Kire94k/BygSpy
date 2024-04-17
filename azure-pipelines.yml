@@ -11,8 +11,8 @@ pool:
 
 stages:
 - stage: Build
- jobs: 
-  - job: Test and build
+  jobs: 
+  - job: Build
     steps:
     - task: DotNetCoreCLI@2
       inputs:
@@ -26,17 +26,13 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         
-  - stage: Deploy 
+- stage: Deploy 
   jobs:
-    - job: Deploy to development
+  - job: Deploy
+    steps:
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'PublishProfile'
         PublishProfilePath: '$(System.DefaultWorkingDirectory)/**/*.pubxml'
-        PublishProfilePassword: '08d183dx1BisCzCBGlsNQmjqveiYBbuLqCNbaQwK8HloY2pBg8JQ1tfir8TY'
+        PublishProfilePassword: '$(08d183dx1BisCzCBGlsNQmjqveiYBbuLqCNbaQwK8HloY2pBg8JQ1tfir8TY)'
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-  
-
-
- 
-
