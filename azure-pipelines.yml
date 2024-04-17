@@ -13,9 +13,15 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'build'
-      projects: '/master/BygSpy.sln'
- 
 
+- task: DotNetCoreCLI@2
+  inputs:
+     command: 'test' 
+- task: DotNetCoreCLI@2
+  inputs:
+     command: 'build'
+     projects: '/master/BygSpy.sln'
+- task: Docker@2
+  inputs:
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
