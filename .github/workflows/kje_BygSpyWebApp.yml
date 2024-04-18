@@ -6,7 +6,7 @@ name: Build and deploy container app to Azure Web App - BygSpyWebApp
 on:
   push:
     branches:
-      - development
+      - master
 
 jobs:
   build:
@@ -21,9 +21,9 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://bygspy2024.azurecr.io/
-        username: BygSpy2024
-        password: R5D6nrg1VZ3G3VP+GPUcZtgx23tNUmU4SWbcSTOIKD+ACRBq+rLT
+        registry: https://bygspy2024.azurecr.io/ 
+        username: ${{ secrets.AzureAppService_ContainerUsername_5b7f924bae3142a5beb6ce002c4f1597 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_90519225107f4656b91c777dbe5d7b67 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'development'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -45,6 +45,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'BygSpyWebApp'
-        slot-name: 'development'
+        slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_dffd02b2258942af83ccb8b5b6b389ff }}
         images: 'bygspy2024.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5b7f924bae3142a5beb6ce002c4f1597 }}/bygspy2024.azurecr.io/bygspy:${{ github.sha }}'
