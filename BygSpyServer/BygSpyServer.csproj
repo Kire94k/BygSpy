@@ -37,6 +37,7 @@
     <PackageReference Include="Quick.AspNetCore.Components.Web.Extensions" Version="6.0.2" />
     <PackageReference Include="Refit" Version="7.0.0" />
     <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
 
